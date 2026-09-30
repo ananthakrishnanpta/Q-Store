@@ -1,4 +1,4 @@
-import apiClient from './axiosClient';
+ import apiClient from './axiosClient';
 
 export async function getProducts() {
     const response  = await apiClient.get('/products');
