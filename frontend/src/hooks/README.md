@@ -30,9 +30,70 @@ function Counter() {
     return (
         <div>
             <h2>Count : {count}</h2>
-            <button>Increment</button>
+            <button onClick = { increment()}>
+                Increment
+            </button>
         </div>
     );
 }
 export default Counter;
 ```
+
+Applications : 
+- Form inputs
+- Shopping cart quantities of individual items
+- Authentication UI state updations
+- Filtering and sorting in search results
+- Modal visibility
+- Theme changes
+- Pagination
+- Tabs
+- Selection of cards, gallery images for forwarding, etc
+
+---
+
+2. **useEffect()** - handles functions with side effects preventing them from being called unintentionally.
+
+- This allows us to synchronise a component with external systems with controlled side effects.
+
+syntax : 
+```jsx
+useEffect(<function_with_side_effect>, [dependency_array]);
+```
+
+```jsx 
+useEffect(
+    () => {
+        // Effect logic
+
+        return () => {
+            // returning the cleanup logic using arrow method
+        };
+    },
+
+    [dependencies]
+);
+
+```
+- Effect is the logic which has side effects.
+- Cleanup will be executed when the effect is required to be cleaned up.
+- **Dependency Array** - Determines when the effect should run again.
+
+    `Dependency Array can have different configurations`
+    
+|Dependency Array| Result |
+|---              | ---   |
+| No dependency array | Effect runs after every committed render |
+| Empty dependency array | Runs after initial mount only (one-time) | 
+| With dependencies | Runs effect after initial mount and whenever the depencencies changes.
+
+Examples : 
+
+- Fetching response from API
+- Setting up event listeners
+- Starting timers
+- Subscribing to WebSockets
+- Updating BOM/DOM
+- Connecting to external libraries
+  
+---
