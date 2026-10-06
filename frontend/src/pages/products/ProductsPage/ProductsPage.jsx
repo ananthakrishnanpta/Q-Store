@@ -1,8 +1,8 @@
+import { useProducts } from "../../../features/products/hooks/useProducts";
+
 const ProductPage = () => {
   return (
-    <div>
-        Products Page
-    </div>
+    <div> Products Page </div>
   )
 };
 
