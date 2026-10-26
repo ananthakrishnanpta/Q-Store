@@ -5,6 +5,7 @@ import AboutPage from "../pages/AboutPage/AboutPage";
 // Products
 import ProductsPage from "../pages/products/ProductsPage/ProductsPage";
 import ProductDetailsPage from "../pages/products/ProductDetailsPage/ProductDetailsPage";
+import CartPage from "../pages/CartPage/CartPage";
 
 import NotFound from "../pages/NotFound/NotFound";
 
@@ -19,7 +20,8 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <HomePage /> },
             { path: "contact", element: <ContactPage /> },
-            { path: "about", element: <AboutPage /> },    
+            { path: "about", element: <AboutPage /> },   
+            { path: "cart", element: <CartPage />}, 
             {
                 path: "products",
                 children: [ 

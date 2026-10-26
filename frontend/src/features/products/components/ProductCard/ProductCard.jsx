@@ -1,5 +1,6 @@
 import styles from "./ProductCard.module.css";
 import { Link } from "react-router-dom";
+import { useCart } from "../../../cart/hooks/useCart";
 
 const ProductCard = ({ product }) => {
   const {
@@ -13,6 +14,7 @@ const ProductCard = ({ product }) => {
     thumbnail,
     reviews = [],
   } = product;
+  const { addToCart } = useCart();
 
   const averageRating =
     reviews.length > 0
@@ -124,6 +126,9 @@ const ProductCard = ({ product }) => {
         <button
           className={styles.productButton}
           disabled={stock <= 0}
+          onClick={() => {
+            addToCart(product);
+          }}
         >
           <span>
             {stock > 0 ? "Add to Cart" : "Unavailable"}
