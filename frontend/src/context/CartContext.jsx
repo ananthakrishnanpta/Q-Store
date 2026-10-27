@@ -43,7 +43,7 @@ export function CartProvider({ children }){
                         title: product.title,
                         price : product.price,
                         thumbnail : product.thumbnail,
-                        quantity : 1
+                        quantity : 1 ,
                     }
                 ];
         });

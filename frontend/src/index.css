@@ -1,5 +1,538 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   Q-SHOP // GLOBAL GRID SYSTEM
+======================================== */
+
 :root {
+    font-family: 'Rajdhani', sans-serif;
+    color: #e0fffa;
+    background: #040b0a;
+
+    --neon: #36ffe0;
+    --neon-bright: #8afff0;
+    --neon-dark: #00bfa5;
+
+    --neon-glow: rgba(54, 255, 224, 0.25);
+    --neon-border: rgba(54, 255, 224, 0.28);
+    --neon-surface: rgba(54, 255, 224, 0.06);
+
+    --bg-primary: #040b0a;
+    --bg-secondary: #071311;
+    --bg-panel: #0a1917;
+    --bg-panel-light: #0d211e;
+
+    --text-primary: #e0fffa;
+    --text-secondary: #9bbcb6;
+    --text-muted: #668780;
+
+    --danger: #ff526f;
+    --warning: #ffc857;
+    --success: #36ffe0;
+
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --font-mono: 'Courier New', monospace;
+
+    --border-radius: 3px;
+    --transition: 180ms ease;
+}
+
+/* ========================================
+   RESET
+======================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    min-height: 100%;
+    scroll-behavior: smooth;
+    scrollbar-color: #176e61 #040b0a;
+    scrollbar-width: thin;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   GLOBAL BACKGROUND GRID
+======================================== */
+
+body {
+    background-image:
+        linear-gradient(
+            rgba(54, 255, 224, 0.018) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(54, 255, 224, 0.018) 1px,
+            transparent 1px
+        ),
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(0, 173, 147, 0.09),
+            transparent 65%
+        );
+
+    background-size:
+        36px 36px,
+        36px 36px,
+        100% 650px;
+
+    background-repeat:
+        repeat,
+        repeat,
+        no-repeat;
+
+    background-attachment: fixed;
+
     main {
         min-height: 100vh;
+    }
+}
+
+/* ========================================
+   TYPOGRAPHY
+======================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 0;
+    color: var(--text-primary);
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+h2 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+h3 {
+    font-size: 1.35rem;
+}
+
+p {
+    color: var(--text-secondary);
+}
+
+small {
+    font-size: 0.8em;
+}
+
+strong,
+b {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+::selection {
+    color: #03110f;
+    background: var(--neon);
+}
+
+/* ========================================
+   LINKS
+======================================== */
+
+a {
+    color: var(--neon);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+a:hover {
+    color: var(--neon-bright);
+}
+
+a:focus-visible {
+    outline: 2px solid var(--neon);
+    outline-offset: 4px;
+}
+
+/* ========================================
+   BUTTONS
+======================================== */
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    color: var(--text-primary);
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--neon);
+    outline-offset: 3px;
+}
+
+.btn {
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-weight: 700;
+    transition:
+        color var(--transition),
+        background-color var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.btn-primary {
+    color: #03110f;
+    background: var(--neon);
+    border-color: var(--neon);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    color: #03110f;
+    background: var(--neon-bright);
+    border-color: var(--neon-bright);
+    box-shadow: 0 0 16px var(--neon-glow);
+}
+
+.btn-outline-primary,
+.btn-outline-success {
+    color: var(--neon);
+    border-color: var(--neon-border);
+    background: transparent;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-success:hover {
+    color: #03110f;
+    background: var(--neon);
+    border-color: var(--neon);
+}
+
+.btn-outline-secondary {
+    color: var(--text-secondary);
+    border-color: rgba(54, 255, 224, 0.22);
+}
+
+.btn-outline-secondary:hover {
+    color: var(--neon);
+    background: var(--neon-surface);
+    border-color: var(--neon);
+}
+
+.btn-danger,
+.btn-outline-danger {
+    --bs-btn-color: var(--danger);
+    --bs-btn-border-color: rgba(255, 82, 111, 0.45);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #b52240;
+    --bs-btn-hover-border-color: var(--danger);
+}
+
+/* ========================================
+   FORMS
+======================================== */
+
+.form-control,
+.form-select {
+    color: var(--text-primary);
+    background-color: #081512;
+    border: 1px solid var(--neon-border);
+    border-radius: var(--border-radius);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+.form-control:focus,
+.form-select:focus {
+    color: var(--text-primary);
+    background-color: #091a17;
+    border-color: var(--neon);
+    box-shadow: 0 0 0 0.2rem rgba(54, 255, 224, 0.1);
+}
+
+.form-select option {
+    color: var(--text-primary);
+    background: var(--bg-secondary);
+}
+
+/* ========================================
+   BOOTSTRAP OVERRIDES
+======================================== */
+
+.container,
+.container-fluid {
+    position: relative;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-warning {
+    color: var(--warning) !important;
+}
+
+.text-success {
+    color: var(--neon) !important;
+}
+
+.bg-dark {
+    background-color: var(--bg-secondary) !important;
+}
+
+.bg-light {
+    background-color: var(--bg-panel) !important;
+}
+
+.bg-white {
+    background-color: var(--bg-panel) !important;
+}
+
+.border {
+    border-color: var(--neon-border) !important;
+}
+
+.border-bottom {
+    border-bottom-color: var(--neon-border) !important;
+}
+
+hr {
+    color: var(--neon);
+    border-color: var(--neon-border);
+    opacity: 1;
+}
+
+/* ========================================
+   CARDS
+======================================== */
+
+.card {
+    color: var(--text-primary);
+    background: var(--bg-panel);
+    border: 1px solid var(--neon-border);
+    border-radius: var(--border-radius);
+}
+
+.card-header,
+.card-footer {
+    color: var(--neon);
+    background: rgba(54, 255, 224, 0.04);
+    border-color: var(--neon-border);
+}
+
+.card-body {
+    color: var(--text-secondary);
+}
+
+.shadow,
+.shadow-sm,
+.shadow-lg {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* ========================================
+   TABLES
+======================================== */
+
+.table {
+    --bs-table-color: var(--text-primary);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: var(--neon-border);
+    --bs-table-striped-bg: rgba(54, 255, 224, 0.025);
+    --bs-table-hover-bg: rgba(54, 255, 224, 0.05);
+
+    color: var(--text-primary);
+}
+
+/* ========================================
+   DROPDOWNS
+======================================== */
+
+.dropdown-menu {
+    color: var(--text-primary);
+    background: var(--bg-panel);
+    border: 1px solid var(--neon-border);
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.dropdown-item {
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+    font-weight: 600;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: var(--neon);
+    background: var(--neon-surface);
+}
+
+.dropdown-divider {
+    border-color: var(--neon-border);
+}
+
+/* ========================================
+   BADGES & ALERTS
+======================================== */
+
+.badge {
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.5px;
+}
+
+.alert {
+    color: var(--text-primary);
+    background: var(--bg-panel);
+    border-radius: var(--border-radius);
+    border-color: var(--neon-border);
+}
+
+/* ========================================
+   IMAGES
+======================================== */
+
+img {
+    max-width: 100%;
+}
+
+img:not([src]),
+img[src=""] {
+    visibility: hidden;
+}
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #040b0a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #176e61;
+    border: 2px solid #040b0a;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--neon-dark);
+}
+
+/* ========================================
+   UTILITY CLASSES
+======================================== */
+
+.text-neon {
+    color: var(--neon) !important;
+}
+
+.text-neon-muted {
+    color: var(--text-muted) !important;
+}
+
+.bg-grid-panel {
+    background: var(--bg-panel) !important;
+}
+
+.border-neon {
+    border: 1px solid var(--neon-border) !important;
+}
+
+.neon-glow {
+    text-shadow: 0 0 12px var(--neon-glow);
+}
+
+.font-display {
+    font-family: var(--font-display) !important;
+}
+
+.font-mono {
+    font-family: var(--font-mono) !important;
+}
+
+.angular-panel {
+    border-radius: 0;
+    clip-path: polygon(
+        0 0,
+        calc(100% - 18px) 0,
+        100% 18px,
+        100% 100%,
+        18px 100%,
+        0 calc(100% - 18px)
+    );
+}
+
+/* ========================================
+   ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 576px) {
+    body {
+        font-size: 16px;
+        background-size:
+            28px 28px,
+            28px 28px,
+            100% 500px;
     }
 }
