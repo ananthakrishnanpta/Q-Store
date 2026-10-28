@@ -1,46 +1,69 @@
+
 import { useProducts } from "../../../features/products/hooks/useProducts";
 import ProductCard from "../../../features/products/components/ProductCard/ProductCard";
+import styles from "./ProductsPage.module.css";
 
 const ProductsPage = () => {
   const { products, loading, error } = useProducts();
 
-  console.log(products);
-
   if (loading) {
     return (
-      <div className="container py-5">
-        <div className="d-flex justify-content-center align-items-center">
-          <span>Loading...</span>
-          <div
-            className="spinner-border text-primary"
-            role="status"
-          >
-            <span className="visually-hidden">Loading...</span>
-          </div>
+      <main className={`container py-5 ${styles.page}`}>
+        <div className={styles.statusPanel} role="status">
+          <span className={styles.loadingRing} />
+          <span>INITIALIZING GRID...</span>
         </div>
-      </div>
+      </main>
     );
   }
 
   if (error) {
-    return <div className="text-danger text-center">Error loading products: {error}</div>;
+    return (
+      <main className={`container py-5 ${styles.page}`}>
+        <div className={styles.errorPanel} role="alert">
+          <span className={styles.sectionLabel}>SYSTEM ERROR</span>
+          <p>Error loading products: {String(error)}</p>
+        </div>
+      </main>
+    );
   }
 
   return (
-    <div className="container py-4">
-      <h2 className="mb-4">Products</h2>
+    <main className={`container py-4 ${styles.page}`}>
+      <header className={styles.pageHeader}>
+        <div>
+          <span className={styles.sectionLabel}>
+            GRID / ITEM DATABASE
+          </span>
+          <h1 className={styles.pageTitle}>PRODUCTS</h1>
+          <p className={styles.pageSubtitle}>
+            Explore the collection. Choose your next acquisition.
+          </p>
+        </div>
 
-      <div className="row g-4">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="col-12 col-sm-6 col-md-4 col-lg-3"
-          >
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
-    </div>
+        <div className={styles.productCount}>
+          <span>AVAILABLE ITEMS</span>
+          <strong>{products.length}</strong>
+        </div>
+      </header>
+
+      {products.length === 0 ? (
+        <div className={styles.statusPanel}>
+          NO ITEMS FOUND IN THE GRID
+        </div>
+      ) : (
+        <div className={`row ${styles.productGrid}`}>
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className={`col-12 col-sm-6 col-md-4 col-lg-3 ${styles.productColumn}`}
+            >
+              <ProductCard product={product} />
+            </div>
+          ))}
+        </div>
+      )}
+    </main>
   );
 };
 
