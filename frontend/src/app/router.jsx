@@ -7,6 +7,10 @@ import ProductsPage from "../pages/products/ProductsPage/ProductsPage";
 import ProductDetailsPage from "../pages/products/ProductDetailsPage/ProductDetailsPage";
 import CartPage from "../pages/CartPage/CartPage";
 
+// Authentication
+import RegisterPage from "../pages/auth/RegisterPage/RegisterPage";
+import LoginPage from "../pages/auth/LoginPage/LoginPage";
+
 import NotFound from "../pages/NotFound/NotFound";
 
 import PageLayout from "../components/layout/PageLayout/PageLayout";
@@ -29,7 +33,14 @@ export const router = createBrowserRouter([
                     { path: ":productId", element : <ProductDetailsPage /> }
                     
                 ]
-            }       
+            },
+            {
+                path: "accounts",
+                children : [
+                    {path: "register", element: <RegisterPage />},
+                    {path: "login", element : <LoginPage />}
+                ]
+            }
         ]
     },
 

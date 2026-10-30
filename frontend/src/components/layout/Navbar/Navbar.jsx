@@ -166,7 +166,7 @@ const Navbar = () => {
                     {/* Authentication */}
                     <div className={styles.authActions}>
                         <NavLink
-                            to="/login"
+                            to="/accounts/login"
                             className={({ isActive }) =>
                                 `${styles.loginLink} ${
                                     isActive ? styles.authActive : ""
@@ -178,7 +178,7 @@ const Navbar = () => {
                         </NavLink>
 
                         <Link
-                            to="/register"
+                            to="/accounts/register"
                             className={styles.registerLink}
                             onClick={closeMenu}
                         >
